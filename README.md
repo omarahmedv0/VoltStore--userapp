@@ -1,16 +1,57 @@
-# e_commerce_app
 
-E-commerece App
+# VoltStore (User App)
 
-## Getting Started
+VOLT Store is an e-commerce application for men's and women's clothing.
 
-This project is a starting point for a Flutter application.
+#### This project consists of three applications:
+* User App
+* Delivey App
+* Admin App
+####  The project is complete:
+* Back-end ✅
+* Front-end ✅
 
-A few resources to get you started if this is your first Flutter project:
+#### Its advantages:
+* Supports multiple languages ( localization ) arabic & english.
+* Supports coupons system
+* Supports notifications
+* Supports subproducts ( select color, size and count )
+* Responsive
+* Supports Rating
+* Supports setting the delivery price according to the governorate
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+#### Features:
+* Splash Screen
+* onboarding Feature
+* authentication Feature
+* Home Feature
+* Products Feature
+* Search Feature
+* Notifications Feature
+* Categories Feature
+* Favorites Feature
+* Cart Feature
+* Promo Code or Coupon Feature for discount
+* Checkout Feature
+* Payment Method ( Credit Card or Cash )
+* Addresses Feature ( add - edit )
+* Orders Feature (Myorders & Received orders)
+* Rating Feature and Reviews on products
+* Contact US
+* Change languages ( Arabic & English )
+* Edit Profile
+##### and some features
+#### Built using:
+* MVVM design pattern
+* bloc (cubit) as a state mangament
+* getx for localization
+* shared pref
+* strip paymant gateway
+* google maps
+* firebase for notifications
+* clean code ( readable, reusable and easy for edit)
+* SOLID principles
+* Mysql database with php native for connect
+## to contact us:
+* Whats app: 01275318664
+* E-mail: omarahmeddev0@gmail.com
