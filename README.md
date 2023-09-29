@@ -11,6 +11,7 @@ VOLT Store is an e-commerce application for men's and women's clothing.
 * Back-end ✅
 * Front-end ✅
 
+## This repository is for the user's application:
 #### Its advantages:
 * Supports multiple languages ( localization ) arabic & english.
 * Supports coupons system
