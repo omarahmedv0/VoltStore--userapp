@@ -40,45 +40,36 @@ import 'features/search/presentation/view_model/cubit/search_cubit.dart';
 import 'injections.dart';
 
 Map<String, Widget Function(BuildContext)> routes = {
-  RouteManager.address: (c) => MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (context) => getIt.get<AddressCubit>()..getAddressData(),
-          ),
-        ],
+  RouteManager.address: (c) => BlocProvider(
+        create: (context) =>
+            AddressCubit(getIt.get<AddressRepoImpl>())..getAddressData(),
         child: const AddressScreen(),
       ),
-  RouteManager.mapAddress: (c) => MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (context) =>
-                getIt.get<MapCubit>()..getDefaultLocation(context),
-          ),
-        ],
+  RouteManager.mapAddress: (c) => BlocProvider(
+        create: (context) => MapCubit()..getDefaultLocation(context),
         child: const MapScreen(),
       ),
-  RouteManager.addAddressDetails: (c) => MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (context) => getIt.get<AddAddressCubit>()..getCities(),
-          ),
-        ],
+  RouteManager.addAddressDetails: (c) => BlocProvider(
+        create: (context) =>
+            AddAddressCubit(getIt.get<AddressRepoImpl>())..getCities(),
         child: const AddAddressDetails(),
       ),
   RouteManager.addressEdit: (c) => BlocProvider(
-        create: (context) => getIt.get<EditAddressCubit>()..getCities(),
+        create: (context) =>
+            EditAddressCubit(getIt.get<AddressRepoImpl>())..getCities(),
         child: const EditAddressScreen(),
       ),
   RouteManager.checkout: (c) => MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => getIt.get<CheckoutCubit>(),
+            create: (context) => CheckoutCubit(getIt.get<CheckoutRepoImpl>()),
           ),
           BlocProvider(
-            create: (context) => getIt.get<PaymentCubit>(),
+            create: (context) =>
+                PaymentCubit(paymentRepoImpl: getIt.get<PaymentRepoImpl>()),
           ),
           BlocProvider(
-            create: (context) => getIt.get<AddressCubit>()
+            create: (context) => AddressCubit(getIt.get<AddressRepoImpl>())
               ..getCities()
               ..getAddressData(),
           ),
@@ -90,7 +81,7 @@ Map<String, Widget Function(BuildContext)> routes = {
   RouteManager.search: (c) => MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => getIt.get<ProductsCubit>()
+            create: (context) => ProductsCubit(getIt.get<ProductsRepoImpl>())
               ..getProductsData(
                 '1',
                 sharedPreferences.getString('userID')!,
@@ -98,25 +89,28 @@ Map<String, Widget Function(BuildContext)> routes = {
               ),
           ),
           BlocProvider(
-            create: (context) => getIt.get<SearchCubit>(),
+            create: (context) => SearchCubit(getIt.get<SearchRepoImpl>()),
           ),
         ],
         child: const SearchScreen(),
       ),
   RouteManager.products: (context) => BlocProvider(
-        create: (context) => getIt.get<ProductsCubit>()..initialData(context),
+        create: (context) =>
+            ProductsCubit(getIt.get<ProductsRepoImpl>())..initialData(context),
         child: const ProductsScreen(),
       ),
   RouteManager.signup: (c) => const SignUpScreen(),
   RouteManager.login: (c) => const LoginScreen(),
   RouteManager.productsReviews: (c) => const ProductsReviewsScreen(),
   RouteManager.editProfile: (c) => BlocProvider(
-        create: (context) => getIt.get<ProfileCubit>()..initialData(),
+        create: (context) =>
+            ProfileCubit(getIt.get<ProfileRepoImpl>())..initialData(),
         child: const EditProfileScreen(),
       ),
   RouteManager.notifications: (c) => BlocProvider(
         create: (context) =>
-            getIt.get<NotificationsCubit>()..getNotifications(context),
+            NotificationsCubit(getIt.get<NotificationsRepoImpl>())
+              ..getNotifications(context),
         child: const NotificationsScreen(),
       ),
   RouteManager.home: (c) => const HomeScreen(),
@@ -125,20 +119,18 @@ Map<String, Widget Function(BuildContext)> routes = {
   RouteManager.myrating: (c) => const MyratingScreen(),
   RouteManager.onboarding: (c) => const OnboardingScreen(),
   RouteManager.myorders: (c) => BlocProvider(
-        create: (context) => getIt.get<MyordersCubit>()..getOrdersData(context),
+        create: (context) => MyordersCubit(getIt.get<MyordersRepoImpl>())
+          ..getOrdersData(context),
         child: const MyordersScreen(),
       ),
-  RouteManager.orderDetails: (c) => MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (context) => getIt.get<RatingCubit>(),
-          ),
-        ],
+  RouteManager.orderDetails: (c) => BlocProvider(
+        create: (context) => RatingCubit(getIt.get<RatingRepoImpl>()),
         child: const OrderDetailsScreen(),
       ),
   RouteManager.orderReceived: (c) => BlocProvider(
         create: (context) =>
-            getIt.get<OrderReceivedCubit>()..getOrdersReceivedData(context),
+            OrderReceivedCubit(getIt.get<OrderReceivedRepoImpl>())
+              ..getOrdersReceivedData(context),
         child: const OrdersReceivedScreen(),
       ),
 };
