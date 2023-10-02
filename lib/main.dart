@@ -49,53 +49,53 @@ class MyApp extends StatelessWidget {
         return MultiBlocProvider(
           providers: [
             BlocProvider(
-              create: (context) => getIt.get<LoginCubit>(),
+              create: (context) => LoginCubit(getIt.get<LoginRepoImpl>()),
             ),
             BlocProvider(
-              create: (context) => getIt.get<SignupCubit>(),
+              create: (context) => SignupCubit(getIt.get<SignupRepoImpl>()),
             ),
             BlocProvider(
-              create: (context) => getIt.get<LanguageCubit>(),
-            ),
-            BlocProvider(
-              create: (context) =>
-                  getIt.get<OnboardingCubit>(),
-            ),
-            BlocProvider(
-              create: (context) => getIt.get<AppLayoutCubit>(),
-            ),
-            BlocProvider(
-              create: (context) => getIt.get<HomeCubit>()..getHomeData(context),
+              create: (context) => LanguageCubit(),
             ),
             BlocProvider(
               create: (context) =>
-                  getIt.get<FavoriteCubit>()..getFavoriteData(),
+                  OnboardingCubit(getIt.get<OnboardingReposImpl>()),
             ),
             BlocProvider(
-              create: (context) => getIt.get<CartCubit>()..getCartData(),
+              create: (context) =>AppLayoutCubit(),
             ),
             BlocProvider(
-              create: (context) => getIt.get<AddressCubit>()..getAddressData(),
-            ),
-            BlocProvider(
-              create: (context) =>
-                  getIt.get<OrderDetailsCubit>(),
+              create: (context) => HomeCubit(getIt.get<HomeRepoImpl>())..getHomeData(context),
             ),
             BlocProvider(
               create: (context) =>
-                  getIt.get<ProductsReviewsCubit>(),
+                  FavoriteCubit(getIt.get<FavoriteRepoImpl>())..getFavoriteData(),
+            ),
+            BlocProvider(
+              create: (context) => CartCubit(getIt.get<CartRepoImpl>())..getCartData(),
+            ),
+            BlocProvider(
+              create: (context) => AddressCubit(getIt.get<AddressRepoImpl>())..getAddressData(),
             ),
             BlocProvider(
               create: (context) =>
-                  getIt.get<MyRatingCubit>(),
+                  OrderDetailsCubit(getIt.get<OrderDetailsRepoImpl >()),
+            ),
+            BlocProvider(
+              create: (context) =>
+                  ProductsReviewsCubit(getIt.get<RatingRepoImpl>()),
+            ),
+            BlocProvider(
+              create: (context) =>
+                  MyRatingCubit(getIt.get<RatingRepoImpl >()),
             ),
              BlocProvider(
               create: (context) =>
-                  getIt.get<RatingCubit>(),
+                  RatingCubit(getIt.get<RatingRepoImpl>()),
             ),
              BlocProvider(
               create: (context) =>
-                  getIt.get<ProductDetailsCubit>(),
+                  ProductDetailsCubit(getIt.get<ProductDetailsRepoImpl >()),
             ),
               
           ],
